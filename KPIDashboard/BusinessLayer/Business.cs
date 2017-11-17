@@ -22,9 +22,13 @@ namespace BusinessLayer
         {
             return dashboardDataAccess.UpdateVersionComboBox(SelectedProduct);
         }
-        public int GetPercent(string SelectedVersion)
-        {
-            return dashboardDataAccess.GetPercent(SelectedVersion);
-        }
+        public List<string> GetPercent(string SelectedVersion)
+        { 
+             return dashboardDataAccess.PercentageCalculator(SelectedVersion);
+
+         }
+
+
+
     }
 }

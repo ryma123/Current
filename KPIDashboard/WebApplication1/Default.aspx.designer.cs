@@ -76,21 +76,30 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Label4 control.
+        /// progress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progress1;
         
         /// <summary>
-        /// ft control.
+        /// progress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ft;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progress2;
+        
+        /// <summary>
+        /// progress3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progress3;
     }
 }

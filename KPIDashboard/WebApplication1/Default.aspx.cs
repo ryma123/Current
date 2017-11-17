@@ -1,7 +1,8 @@
-﻿using KPI_Dashboard.BusinessLayer;
+﻿using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,31 +11,33 @@ namespace WebApplication1
 {
     public partial class Default : System.Web.UI.Page
     {
-       
+        Business business;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-               //DashboardPresenter db = new DashboardPresenter();
+                
+                business = new Business();
 
-               // Session["Database"] = db;
-              // PopulateProductComboBox();
+                Session["Database"] = business;
+
+                 PopulateProductComboBox();
                 if (DropDownList2.SelectedItem != null)
                 {
 
-              ///  PopulateVersionComboBox();
+                    PopulateVersionComboBox();
                 }
 
             }
         }
 
-      
+
 
         public void PopulateProductComboBox()
         {
-            //foreach (string product in ((DashboardPresenter)Session["Database"]).GetAllProduct())
+            foreach (string product in ((Business)Session["Database"]).GetAllProduct())
 
-            //{ DropDownList2.Items.Add(product); }
+            { DropDownList2.Items.Add(product); }
 
         }
 
@@ -42,41 +45,42 @@ namespace WebApplication1
         {
             DropDownList1.Items.Clear();
             string temp = DropDownList2.SelectedItem.ToString();
-            foreach (string version in ((DashboardPresenter)Session["Database"]).GetAllVersion(temp))
+            foreach (string version in ((Business)Session["Database"]).GetAllVersion(temp))
             { DropDownList1.Items.Add(version); }
         }
 
 
 
-
-
-
-        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DropDownList2.SelectedItem != null)
-            {
-
-                PopulateVersionComboBox();
-            }
-
-        }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            string v = DropDownList1.SelectedItem.ToString();
-            int s = business.GetPercent(v);
-            string t = s.ToString();
-            Label4.Text = t;
-
-            // ProgressText.InnerText =TextBox1.Text + "%";
-            // Div2.InnerText = TextBox1.Text + "%";
-            ////  CalculateActiveUsersAngle(16, out val1, out val2, out colorCode);
-            //  CalculateActiveUsersAngle(Convert.ToInt32(TextBox1.Text), out val3, out val4, out colorCode2);
-
-            ft.Attributes["data-percent"] = t;
+            string version = DropDownList1.SelectedItem.ToString();
+ 
+            progress1.Attributes["data-percent"] = Percentage("OnTimeShipment", version);
+            progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
+            progress3.Attributes["data-percent"] = Percentage("TestCoverage", version);
+          
         }
 
-       
+        protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+
+            PopulateVersionComboBox();
+
+        }
+        public string Percentage(string kpiType, string version)
+        {
+            var stringPercentage = "";
+            foreach (var percentage in ((Business)Session["Database"]).GetPercent(version))
+            {
+                if (percentage.StartsWith(kpiType))
+                {
+                    stringPercentage = Regex.Match(percentage, @"\d+").Value;
+
+                }
+
+            }
+            return stringPercentage;
+        }
     }
 }
