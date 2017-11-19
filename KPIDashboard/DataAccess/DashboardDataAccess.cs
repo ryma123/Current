@@ -9,13 +9,27 @@ namespace DataAccess
     public class DashboardDataAccess
     {
 
-        public IReader Reader;
-
+        public IReader Reader; DataTable dataTable;
+        public delegate void NotifyBusiness(DashboardDataAccess dashboard, EventArgs e); //declaring a delegate
+        public NotifyBusiness notify;     //creating an object of delegate
+        public EventArgs e = null;
         public DashboardDataAccess()
         {
             Reader = new ExcelReader();
-            DataTable dataTable = (DataTable)Reader.Read();
+          dataTable = (DataTable)Reader.Read();
             AddToDatabase(dataTable);
+            // (Reader as ExcelReader).
+            this.Subscribe(Reader as ExcelReader);
+        }
+        public void Subscribe(ExcelReader m)  //get the object of pubisher class
+        {
+            m.Tick += HeardIt;              //attach listener class method to publisher class delegate object
+        }
+        private void HeardIt(ExcelReader m, EventArgs e)   //subscriber class method
+        {
+            dataTable = (DataTable)Reader.Read();
+            AddToDatabase(dataTable);
+            notify?.Invoke(this, e);  //if it points i.e. not null then invoke that method!
 
         }
         public void AddToDatabase(DataTable dataTable)

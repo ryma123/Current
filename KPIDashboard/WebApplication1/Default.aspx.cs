@@ -68,6 +68,22 @@ namespace WebApplication1
             PopulateVersionComboBox();
 
         }
+
+        public void Subscribe(Business business)  //get the object of pubisher class
+        {
+            business.notifyPresenter+= HeardIt;    //attach listener class method to publisher class delegate object
+        }
+        private void HeardIt(Business business, EventArgs e)   //subscriber class method
+        {
+            PopulateProductComboBox();
+            if (DropDownList2.SelectedItem != null)
+            {
+
+                PopulateVersionComboBox();
+            }
+            // notifyPresenter?.Invoke(this, e);  //if it points i.e. not null then invoke that method!
+
+        }
         public string Percentage(string kpiType, string version)
         {
             var stringPercentage = "";

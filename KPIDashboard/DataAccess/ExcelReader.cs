@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
+using System;
+
 namespace DataAccess
 
 {
     public class ExcelReader : IReader
     {
         static private DataTable dataTable = new DataTable();
-
+        public delegate void TickHandler(ExcelReader m, EventArgs e); //declaring a delegate
+        public TickHandler Tick;     //creating an object of delegate
+        public EventArgs e = null;   //set 2nd paramter empty
         static private Excel.Application excelApp;
         static private Excel.Workbook workBook;
         static private Excel.Worksheet worksheet;
@@ -19,7 +23,7 @@ namespace DataAccess
         {
             excelApp = new Excel.Application();
             excelApp.Visible = true;
-            excelApp.Workbooks.Open(@"C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
+            excelApp.Workbooks.Open(@"C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
             workBook = excelApp.Workbooks["test1.xlsx"];
             worksheet = workBook.Sheets[1];
             worksheetUsedRange = worksheet.UsedRange;
@@ -92,13 +96,14 @@ namespace DataAccess
             FillRowsInDataTable();
             return dataTable;
         }
-        private void Workbook_AfterSave(bool success)
+        public void Workbook_AfterSave(bool success)
         {
             rowItemsList = new List<string>();
             columnsNameList = new List<string>();
             dataTable = new DataTable();
             worksheetUsedRange = worksheet.UsedRange;
-            Read();
+             Read();
+            Tick?.Invoke(this, e);  //if it points i.e. not null then invoke that method!
         }
     }
 }

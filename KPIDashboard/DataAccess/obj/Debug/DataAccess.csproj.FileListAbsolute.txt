@@ -7,3 +7,13 @@ C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\DataAccess\bin\Debug\EntityFramework.
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\DataAccess\obj\Debug\DataAccess.dll
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.pdb
