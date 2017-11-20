@@ -1,0 +1,9 @@
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.pdb
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
