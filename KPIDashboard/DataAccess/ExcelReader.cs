@@ -21,7 +21,7 @@ namespace DataAccess
         {
             excelApp = new Excel.Application();
             excelApp.Visible = true;
-            excelApp.Workbooks.Open(@"C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
+            excelApp.Workbooks.Open(@"C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
             workBook = excelApp.Workbooks["test1.xlsx"];
             worksheet = workBook.Sheets[1];
             worksheetUsedRange = worksheet.UsedRange;

@@ -7,3 +7,12 @@ C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Debug\EntityFramewo
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
