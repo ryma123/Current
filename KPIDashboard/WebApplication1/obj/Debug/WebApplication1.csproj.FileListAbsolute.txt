@@ -80,3 +80,5 @@ C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\bin\DataAcc
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\bin\DocumentFormat.OpenXml.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\bin\DocumentFormat.OpenXml.xml

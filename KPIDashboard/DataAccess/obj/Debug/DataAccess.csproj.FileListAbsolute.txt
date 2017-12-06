@@ -18,3 +18,5 @@ C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\Entity
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\DataAccess\bin\Debug\DocumentFormat.OpenXml.xml

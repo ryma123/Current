@@ -16,3 +16,5 @@ C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\Ent
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\DocumentFormat.OpenXml.xml

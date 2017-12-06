@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using Excel = Microsoft.Office.Interop.Excel;
+﻿using System;
+using System.Collections.Generic;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+
 using System.Data;
-using System;
+
 
 namespace DataAccess
 
@@ -10,100 +13,117 @@ namespace DataAccess
     {
         static private DataTable dataTable = new DataTable();
 
-        static private Excel.Application excelApp;
-        static private Excel.Workbook workBook;
-        static private Excel.Worksheet worksheet;
-        static private Excel.Range worksheetUsedRange;
+        //static private Excel.Application excelApp;
+        //static private Excel.Workbook workBook;
+        //static private Excel.Worksheet worksheet;
+        //static private Excel.Range worksheetUsedRange;
         static private List<string> rowItemsList = new List<string>();
         static private List<string> columnsNameList = new List<string>();
-
+      
         public ExcelReader()
         {
-            excelApp = new Excel.Application();
-            excelApp.Visible = true;
-            excelApp.Workbooks.Open(@"C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
-            workBook = excelApp.Workbooks["test1.xlsx"];
-            worksheet = workBook.Sheets[1];
-            worksheetUsedRange = worksheet.UsedRange;
-            workBook.AfterSave += Workbook_AfterSave;
+            //excelApp = new Excel.Application();
+            //excelApp.Visible = true;
+            //excelApp.Workbooks.Open(@"C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx");
+            //workBook = excelApp.Workbooks["test1.xlsx"];
+            //worksheet = workBook.Sheets[1];
+            //worksheetUsedRange = worksheet.UsedRange;
+            //workBook.AfterSave += Workbook_AfterSave;
 
         }
 
         public void ReadExcel()
         {
-            rowItemsList = new List<string>();
-            columnsNameList = new List<string>();
 
-            int FirstRow = 1;
-            int FirstColumn = 1;
-            for (int rowLoop = FirstRow; rowLoop <= worksheetUsedRange.Rows.Count; rowLoop++)
+            string filepath = @"C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx";
+            //open the excel using openxml sdk  
+            using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filepath, false))
             {
-                for (int columnLoop = FirstColumn; columnLoop <= worksheetUsedRange.Columns.Count; columnLoop++)
-                {
-                    if (rowLoop == 1)
-                    {
-                        if (worksheet.Cells[rowLoop, columnLoop] != null && worksheet.Cells[rowLoop, columnLoop].Value2 != null)
-                        {
-                            columnsNameList.Add(worksheet.Cells[rowLoop, columnLoop].Value2.ToString());
-                        }
-                    }
-                    else
-                    {
-                        if (worksheet.Cells[rowLoop, columnLoop] != null && worksheet.Cells[rowLoop, columnLoop].Value2 != null)
-                        {
-                            rowItemsList.Add(worksheet.Cells[rowLoop, columnLoop].Value2.ToString());
-                        }
-                    }
-                }
+                Sheet sheet = doc.WorkbookPart.Workbook.Sheets.GetFirstChild<Sheet>();
+                //Get the Worksheet instance.
+                Worksheet worksheet = (doc.WorkbookPart.GetPartById(sheet.Id.Value) as WorksheetPart).Worksheet;
+                //Fetch all the rows present in the Worksheet.
+                IEnumerable<Row> rows = worksheet.GetFirstChild<SheetData>().Descendants<Row>();
+                //Fill DataTable.
+                FillDataTable(rows, doc);
+
             }
         }
-        public void FillColumnsInDataTable()
+
+        public void FillDataTable(IEnumerable<Row> rows, SpreadsheetDocument doc)
         {
             dataTable = new DataTable();
-            foreach (var columnName in columnsNameList)
+            foreach (Row row in rows)
             {
-                dataTable.Columns.Add(columnName, typeof(string));
-            }
-        }
-
-        public void FillRowsInDataTable()
-        {
-            int totalColumnInDataTable = dataTable.Columns.Count;
-            int counter = rowItemsList.Count / totalColumnInDataTable;
-            int InnerIiteration = 0;
-
-            for (int i = 1; i <= counter; i++)
-            {
-
-                int columns = 0;
-                DataRow newrow = dataTable.NewRow();
-                while (InnerIiteration < (i * totalColumnInDataTable))
+                //Use the first row to add columns to DataTable.
+                if (row.RowIndex.Value == 1)
                 {
-                    string value = rowItemsList[InnerIiteration];
-                    newrow[columns] = value;
-                    columns++;
-                    InnerIiteration++;
+                    foreach (Cell cell in row.Descendants<Cell>())
+                    {
+                        dataTable.Columns.Add(GetValue(doc, cell));
+                    }
                 }
-                dataTable.Rows.Add(newrow);
+                else
+                {
+                    //Add rows to DataTable.
+                    dataTable.Rows.Add();
+                    int i = 0;
+                    foreach (Cell cell in row.Descendants<Cell>())
+                    {
+                        dataTable.Rows[dataTable.Rows.Count - 1][i] = GetValue(doc, cell);
+                        i++;
+                    }
+                }
             }
         }
+
+        private string GetValue(SpreadsheetDocument doc, Cell cell)
+        {
+            string value = cell.CellValue.InnerText;
+            if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+            {
+                return doc.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
+            }
+            return value;
+        }
+      
         public object Read()
         {
             ReadExcel();
-            FillColumnsInDataTable();
-            FillRowsInDataTable();
+          
             return dataTable;
         }
-        public delegate void NotifyDataAccess(ExcelReader m, EventArgs e); 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public delegate void NotifyDataAccess(ExcelReader m, EventArgs e); 
         public NotifyDataAccess notifyDataAccess;    
-        public EventArgs e = null;  
+        public EventArgs e = null;
+
         private void Workbook_AfterSave(bool success)
         {
-            rowItemsList = new List<string>();
-            columnsNameList = new List<string>();
-            dataTable = new DataTable();
-            worksheetUsedRange = worksheet.UsedRange;
-            notifyDataAccess?.Invoke(this, e); 
+            //rowItemsList = new List<string>();
+            //columnsNameList = new List<string>();
+            //dataTable = new DataTable();
+            //worksheetUsedRange = worksheet.UsedRange;
+            //notifyDataAccess?.Invoke(this, e); 
         }
+
+
+
+
     }
 }
