@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
-
+using System.Configuration;
 using System.Data;
 
 
@@ -12,11 +12,11 @@ namespace DataAccess
     public class ExcelReader : IReader
     {
         static private DataTable dataTable = new DataTable();
+        string Path = ConfigurationManager.AppSettings["FilePath"].ToString();
 
-     
         public void ReadExcel()
         {
-            string filepath = @"C:\Users\rkhan\Documents\GitHub\Current\KPIDashboard\WebApplication1\App_Data\test1.xlsx";
+            string filepath = Path;
             //open the excel using openxml sdk  
             using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filepath, false))
             {   Sheet sheet = doc.WorkbookPart.Workbook.Sheets.GetFirstChild<Sheet>();
