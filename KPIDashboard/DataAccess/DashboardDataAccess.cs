@@ -64,7 +64,7 @@ namespace DataAccess
         {
             foreach (Release r in db.Release)
             {
-                if (r.Product.Productname == release.Product.Productname || r.ReleaseNamme == release.ReleaseNamme)
+                if ( r.ReleaseNamme == release.ReleaseNamme)
 
                 { return true; }
 
