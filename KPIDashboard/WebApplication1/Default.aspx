@@ -10,10 +10,10 @@
                 <ContentTemplate>
                     <fieldset>
                         <asp:Label ID="Label3" runat="server" Enabled="False" Text="Select the product"></asp:Label>
-                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"  Width="103px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" ><asp:ListItem Text ="Product" Value="0" />
+                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"  Width="103px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" ><asp:ListItem Text ="" Value="0" disabled />
                         </asp:DropDownList>
                         &nbsp;<asp:Label ID="Label2" runat="server" Enabled="False" Text="Select the version"></asp:Label>
-                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="103px"><asp:ListItem Text ="Version" Value="0" />
+                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="103px">
                         </asp:DropDownList>
    
 
