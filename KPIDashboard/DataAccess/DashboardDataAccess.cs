@@ -17,25 +17,14 @@ namespace DataAccess
             Reader = new ExcelReader();
             dataTable = (DataTable)Reader.Read();
             AddToDatabase(dataTable);
-            Subscribe(Reader as ExcelReader);
+          
         }
 
-        public delegate void NotifyBusiness(DashboardDataAccess dashboard, EventArgs e);
-        public NotifyBusiness notify;
-        public EventArgs e = null;
+       
 
-        public void Subscribe(ExcelReader excelReader)
-        {
-            excelReader.notifyDataAccess += HeardIt;
-        }
+        
 
-        private void HeardIt(ExcelReader m, EventArgs e)
-        {
-            dataTable = (DataTable)Reader.Read();
-            AddToDatabase(dataTable);
-            notify?.Invoke(this, e);
-
-        }
+       
 
         public void AddToDatabase(DataTable dataTable)
         {
@@ -92,8 +81,8 @@ namespace DataAccess
                 { productList.Add(p.Productname); }
 
             }
-            var uniqueProductList = productList.Distinct().ToList();
-            return uniqueProductList;
+           
+            return productList;
 
         }
 
