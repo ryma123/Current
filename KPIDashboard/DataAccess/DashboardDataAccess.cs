@@ -81,7 +81,7 @@ namespace DataAccess
                 { productList.Add(p.Productname); }
 
             }
-           
+            productList = productList.Distinct().ToList();
             return productList;
 
         }
@@ -142,8 +142,21 @@ namespace DataAccess
                 return versionlist;
             }
         }
-       
 
+        //public string GetProductName(string selectedversion)
+        //{
+        //    var versionlist = new List<string>();
+        //    using (var db = new RelationCont())
+        //    {
+        //        foreach (Release r in db.Release)
+        //        {
+        //            if (r.Product.Productname == selectedProduct)
+        //            { versionlist.Add(r.ReleaseNamme); }
+        //        }
+
+        //        return versionlist;
+        //    }
+        //}
         public List<string> PercentageCalculator(string selectedProduct)
         {
             var percentageList = new List<string>();
