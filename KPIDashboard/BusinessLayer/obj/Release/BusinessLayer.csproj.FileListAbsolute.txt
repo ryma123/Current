@@ -1,0 +1,22 @@
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\BusinessLayer.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\BusinessLayer.pdb
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\DataAccess.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\EntityFramework.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\DataAccess.pdb
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\bin\Release\EntityFramework.xml
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.pdb
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\BusinessLayer.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\BusinessLayer.pdb
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\DataAccess.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\DocumentFormat.OpenXml.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\EntityFramework.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\DataAccess.pdb
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\DocumentFormat.OpenXml.xml
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\bin\Release\EntityFramework.xml
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.dll
+C:\SB\TEM_Apps  KPI_Dashboard\KPIDashboard\BusinessLayer\obj\Release\BusinessLayer.pdb

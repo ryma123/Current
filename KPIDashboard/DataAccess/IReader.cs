@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-namespace DataAccess
+﻿namespace DataAccess
 {
     public interface IReader
     {
-
-        Object Read();
-
+        object Read();
 
     }
 }

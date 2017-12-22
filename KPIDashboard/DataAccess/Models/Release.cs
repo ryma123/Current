@@ -12,7 +12,7 @@ namespace DataAccess.Models
         public int Id { get; set; }
     
 
-        public string ReleaseNamme { get; set; }
+        public string ReleaseName { get; set; }
         public virtual Product Product { get; set; }
     }
 }

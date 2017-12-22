@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using DataAccess.Models;
 using System;
@@ -10,90 +9,96 @@ namespace DataAccess
     public class DashboardDataAccess
     {
        
-        public IReader Reader;
-        DataTable dataTable;
+     //   public IReader reader;
+    //    DataTable dataTable;
         public DashboardDataAccess()
         {
-            Reader = new ExcelReader();
-            dataTable = (DataTable)Reader.Read();
+            IReader   reader = new ExcelReader();
+            DataTable dataTable = (DataTable)reader.Read();
             AddToDatabase(dataTable);
           
         }
 
        
 
-        
-
-       
 
         public void AddToDatabase(DataTable dataTable)
         {
             var numberOfRows = dataTable.Rows.Count;
             for (int row = 0; row < numberOfRows; row++)
-            {
-                var Productname = dataTable.Rows[row]["Product"];
-                var releaseid = dataTable.Rows[row]["Release"];
-                var Location = dataTable.Rows[row]["Location"];
-                int FreezePeriod = int.Parse(dataTable.Rows[row]["FreezePeriod"].ToString());
-                int TotalFTE = int.Parse(dataTable.Rows[row]["TotalFTE"].ToString());
-                int Effort = int.Parse(dataTable.Rows[row]["Effort"].ToString());
-                var PlannedTest = dataTable.Rows[row]["PlannedTest"];
-                var PassedTest = dataTable.Rows[row]["PassedTest"];
-                var ExecutedTest = dataTable.Rows[row]["ExecutedTest"];
-                int PlannedUseCase = int.Parse(dataTable.Rows[row]["PlannedUseCase"].ToString());
-                int ActualUsCase = int.Parse(dataTable.Rows[row]["ActualUsCase"].ToString());
-                int fg = int.Parse(PlannedUseCase.ToString());
+            {  
+                var productName = dataTable.Rows[row]["Product"];
+                var releaseId = dataTable.Rows[row]["Release"];
+                var location = dataTable.Rows[row]["Location"];
+                int freezePeriod = int.Parse(dataTable.Rows[row]["FreezePeriod"].ToString());
+                int totalFTE = int.Parse(dataTable.Rows[row]["TotalFTE"].ToString());
+                int effort = int.Parse(dataTable.Rows[row]["Effort"].ToString());
+                var plannedTest = dataTable.Rows[row]["PlannedTest"];
+                var passedTest = dataTable.Rows[row]["PassedTest"];
+                var executedTest = dataTable.Rows[row]["ExecutedTest"];
+                int plannedUseCase = int.Parse(dataTable.Rows[row]["PlannedUseCase"].ToString());
+                int actualUsCase = int.Parse(dataTable.Rows[row]["ActualUsCase"].ToString());
+               
 
-                using (var db = new RelationCont())
+                using (var database = new RelationCont())
                 {
-                    var product = db.Product.Add(new Product() { Productname = Productname.ToString(), Location = Location.ToString() });
-                    var release = db.Release.Add(new Release() { Product = product, ReleaseNamme = releaseid.ToString() });
-                    if (!(DuplicateDataCheck(release, db)))
+                    var product = database.Product.Add(new Product() { Productname = productName.ToString(), Location = location.ToString() });
+                    var release = database.Release.Add(new Release() { Product = product, ReleaseName = releaseId.ToString() });
+                    if (!(DuplicateDataCheck(release, database)))
                     {
-                        var kpi = db.kpi.Add(new OnTimeShipment() { Product = product, PlannedUseCases = PlannedUseCase, ActualUseCases = ActualUsCase });
-                        var kpirelease = db.Releasekpi.Add(new JoinReleaseKpi() { kpi = kpi, Release = release });
-                        db.kpi.Add(new CodeFreeze() { Product = product, FreezePeriod = FreezePeriod, Effort = Effort, TotalFTE = TotalFTE });
-                        db.kpi.Add(new TestCoverage() { Product = product, Executed = ExecutedTest.ToString(), Planned = PlannedTest.ToString(), Passed = PassedTest.ToString() });
-                        db.SaveChanges();
+                        var kpi = database.kpi.Add(new OnTimeShipment() { Product = product, PlannedUseCases = plannedUseCase,
+                                                                          ActualUseCases = actualUsCase });
+                        var kpirelease = database.Releasekpi.Add(new JoinReleaseKpi() { kpi = kpi, Release = release });
+                        database.kpi.Add(new CodeFreeze() { Product = product, FreezePeriod = freezePeriod, Effort = effort, TotalFTE = totalFTE });
+                        database.kpi.Add(new TestCoverage() { Product = product, Executed = executedTest.ToString(),
+                                                              Planned = plannedTest.ToString(), Passed = passedTest.ToString() });
+                        database.SaveChanges();
                     }
                 }
             }
         }
 
-        public bool DuplicateDataCheck(Release release, RelationCont db)
-        {
-            foreach (Release r in db.Release)
-            {
-                if ( r.ReleaseNamme == release.ReleaseNamme)
 
-                { return true; }
+        public bool DuplicateDataCheck(Release release, RelationCont database)
+        {
+            foreach (Release releas in database.Release)
+            {
+                if ( releas.ReleaseName == release.ReleaseName)
+
+                {
+                    return true;
+                }
 
             }
             return false;
         }
 
-        public List<string> UpdateProductComboBox()
+
+        public List<string> GetAllProduct()
         {
             var productList = new List<string>();
-            using (var db = new RelationCont())
+            using (var database = new RelationCont())
             {
-                foreach (Product p in db.Product)
-                { productList.Add(p.Productname); }
+                foreach (Product product in database.Product)
+                { productList.Add(product.Productname); }
 
             }
-            productList = productList.Distinct().ToList();
-            return productList;
-
+            return productList.Distinct().ToList();
+          
         }
 
 
         public string OnTimeShipmentPercentageCalculator(KPI kpi)
         {
             if (((OnTimeShipment)kpi).PlannedUseCases == 0)
-            { return "OnTimeShipment" + 0; }
+            {
+                return "OnTimeShipment" + 0;
+            }
             else
-              return "OnTimeShipment" + (int)Math.Round((double)
+            {
+                return "OnTimeShipment" + (int)Math.Round((double)
                 (100 * ((OnTimeShipment)kpi).ActualUseCases) / ((OnTimeShipment)kpi).PlannedUseCases);
+            }
         }
 
 
@@ -128,64 +133,51 @@ namespace DataAccess
         }
 
 
-        public List<string> UpdateVersionComboBox(string selectedProduct)
+        public List<string> GetAllVersions(string selectedProduct)
         {
             var versionlist = new List<string>();
-            using (var db = new RelationCont())
+            using (var database = new RelationCont())
             {
-                foreach (Release r in db.Release)
+                foreach (Release release in database.Release)
                 {
-                    if (r.Product.Productname == selectedProduct)
-                        { versionlist.Add(r.ReleaseNamme); }
+                    if (release.Product.Productname == selectedProduct)
+                        { versionlist.Add(release.ReleaseName); }
                 }
 
                 return versionlist;
             }
         }
 
-        //public string GetProductName(string selectedversion)
-        //{
-        //    var versionlist = new List<string>();
-        //    using (var db = new RelationCont())
-        //    {
-        //        foreach (Release r in db.Release)
-        //        {
-        //            if (r.Product.Productname == selectedProduct)
-        //            { versionlist.Add(r.ReleaseNamme); }
-        //        }
-
-        //        return versionlist;
-        //    }
-        //}
+    
         public List<string> PercentageCalculator(string selectedProduct)
         {
             var percentageList = new List<string>();
-            using (var db = new RelationCont())
-            {   //initializing entities of database 
-                foreach (Release rel in db.Release)
+            using (var database = new RelationCont())
+            {  
+                foreach (Release releas in database.Release)
                 {
-                    { Release release = rel; }
+                    { Release release = releas; }
                 }
 
-                foreach (KPI kp in db.kpi)
+                foreach (KPI kp in database.kpi)
 
                 {
                     KPI kpi = kp;
 
                 }
-                foreach (Product prod in db.Product)
+                foreach (Product produc in database.Product)
 
                 {
-                    Product product = prod;
+                    Product product = produc;
 
                 }
 
-                foreach (JoinReleaseKpi releaseKpi in db.Releasekpi)
+                foreach (JoinReleaseKpi releaseKpi in database.Releasekpi)
                 {
-                    if (releaseKpi.Release.ReleaseNamme == selectedProduct)
+                    if (releaseKpi.Release.ReleaseName == selectedProduct)
                     {
                        
-                            foreach (var kpi in db.kpi)
+                            foreach (var kpi in database.kpi)
                             {
                                 if (releaseKpi.kpi.Product.Id == kpi.Product.Id)
                                 {

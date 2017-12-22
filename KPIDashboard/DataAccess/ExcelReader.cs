@@ -11,26 +11,31 @@ namespace DataAccess
     public class ExcelReader : IReader
     {
         static private DataTable dataTable = new DataTable();
-        string Path = ConfigurationManager.AppSettings["FilePath"].ToString();
+      
 
         public void ReadExcel()
         {
-            string filepath = Path;
-            //open the excel using openxml sdk  
-            using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filepath, false))
-            {   Sheet sheet = doc.WorkbookPart.Workbook.Sheets.GetFirstChild<Sheet>();
+            string filepath = ConfigurationManager.AppSettings["FilePath"].ToString();
+                //open the excel using openxml sdk  
+            using (SpreadsheetDocument document = SpreadsheetDocument.Open(filepath, false))
+            {   Sheet sheet = document.WorkbookPart.Workbook.Sheets.GetFirstChild<Sheet>();
                 //Get the Worksheet instance.
-                Worksheet worksheet = (doc.WorkbookPart.GetPartById(sheet.Id.Value) as WorksheetPart).Worksheet;
+                Worksheet worksheet = (document.WorkbookPart.GetPartById(sheet.Id.Value) as WorksheetPart).Worksheet;
                 //Fetch all the rows present in the Worksheet.
                 IEnumerable<Row> rows = worksheet.GetFirstChild<SheetData>().Descendants<Row>();
                 //Fill DataTable.
-                FillDataTable(rows, doc);
+                FillDataTable(rows, document);
               
             
              }
         }
+        public object Read()
+        {
+            ReadExcel();
+            return dataTable;
+        }
 
-        public void FillDataTable(IEnumerable<Row> rows, SpreadsheetDocument doc)
+        public void FillDataTable(IEnumerable<Row> rows, SpreadsheetDocument document)
         {
             dataTable = new DataTable();
             foreach (Row row in rows)
@@ -40,7 +45,7 @@ namespace DataAccess
                 {
                     foreach (Cell cell in row.Descendants<Cell>())
                     {
-                        dataTable.Columns.Add(GetValue(doc, cell));
+                        dataTable.Columns.Add(GetValue(document, cell));
                     }
                 }
                 else
@@ -50,29 +55,23 @@ namespace DataAccess
                     int i = 0;
                     foreach (Cell cell in row.Descendants<Cell>())
                     {
-                        dataTable.Rows[dataTable.Rows.Count - 1][i] = GetValue(doc, cell);
+                        dataTable.Rows[dataTable.Rows.Count - 1][i] = GetValue(document, cell);
                         i++;
                     }
                 }
             }
         }
 
-        private string GetValue(SpreadsheetDocument doc, Cell cell)
+        private string GetValue(SpreadsheetDocument document, Cell cell)
         {
             string value = cell.CellValue.InnerText;
             if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
             {
-                return doc.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
+                return document.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
             }
             return value;
         }
       
-        public object Read()
-        {
-            ReadExcel();
-          
-            return dataTable;
-        }
-
+     
     }
 }

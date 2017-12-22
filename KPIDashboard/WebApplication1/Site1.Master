@@ -43,7 +43,7 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
-                   <a class="navbar-brand" runat="server"  href="~/"><h1 style="color: #f75567; font-weight: bolder;margin-right:200px;margin-left:200px; width: 512px; height: 46px;">&nbsp;KPI Management Dashboard</h1></a>
+                   <a class="navbar-brand" runat="server"  href="~/"><h1 style="color: #f75567; font-weight: bolder;margin-right:200px;margin-left:200px; width: 512px; height: 38px; margin-top: 0px;">&nbsp;&nbsp;KPI Management Dashboard</h1></a>
             </div>
         </div>
         <div class="container body-content">
@@ -57,7 +57,7 @@
 
        
     </form>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            <hr style="color: &nbsp;#f75567; text-decoration: blink" />
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            <hr style="color: &nbsp;#f75567; text-decoration: blink; height: -42px;" />
             </body>
 </html>

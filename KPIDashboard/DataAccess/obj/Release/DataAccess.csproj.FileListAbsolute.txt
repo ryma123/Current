@@ -1,0 +1,12 @@
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\DataAccess.dll.config
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\DataAccess.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\DataAccess.pdb
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\EntityFramework.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\EntityFramework.xml
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\obj\Release\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\obj\Release\DataAccess.dll
+C:\Users\rkhan\Desktop\KPITry\KPIDashboard\DataAccess\obj\Release\DataAccess.pdb

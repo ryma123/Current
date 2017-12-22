@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\rkhan\Desktop\ab</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="App_Data/test1.xlsx">
+      <publishTime>12/20/2017 13:38:31</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>05/11/2017 14:28:20</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/BusinessLayer.dll">
+      <publishTime>12/22/2017 13:08:13</publishTime>
+    </File>
+    <File Include="bin/DataAccess.dll">
+      <publishTime>12/20/2017 14:14:45</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>09/01/2012 02:24:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>11/16/2017 10:09:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>11/16/2017 10:09:07</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="bin/WebApplication1.dll">
+      <publishTime>12/22/2017 13:08:16</publishTime>
+    </File>
+    <File Include="Bundle.config">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="ClassDiagram1.cd">
+      <publishTime>11/16/2017 11:01:53</publishTime>
+    </File>
+    <File Include="Content/boot.css">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>12/22/2017 13:05:35</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>12/22/2017 13:02:14</publishTime>
+    </File>
+    <File Include="jQuery-plugin-progressbar.css">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="jQuery-plugin-progressbar.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="jQuery-plugin-progressbar.scss">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/19/2017 09:58:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.js">
+      <publishTime>12/18/2017 12:19:55</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/DetailsView.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/Focus.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/GridView.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/Menu.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MenuStandards.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjax.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxApplicationServices.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxComponentModel.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxCore.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxGlobalization.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxHistory.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxNetwork.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxSerialization.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxTimer.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxWebForms.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/MSAjax/MicrosoftAjaxWebServices.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/SmartNav.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/TreeView.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/WebForms.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/WebParts.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Scripts/WebForms/WebUIValidation.js">
+      <publishTime>11/15/2017 14:05:50</publishTime>
+    </File>
+    <File Include="Site1.Master">
+      <publishTime>12/22/2017 13:07:29</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/22/2017 13:08:16</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

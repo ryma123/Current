@@ -125,6 +125,7 @@
     <Content Include="jQuery-plugin-progressbar.scss" />
     <Content Include="App_Data\test1.xlsx" />
     <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\PublishProfiles\any.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

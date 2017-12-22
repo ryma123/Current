@@ -1,15 +1,8 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Timers;
-using System.Web.Services;
-using System.Web.Script.Services;
+
 using System.Data;
 
 namespace WebApplication1
@@ -20,19 +13,17 @@ namespace WebApplication1
         private static System.Timers.Timer aTimer;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack)
             {
                 business = new Business();
                 Session["Database"] = business;
-
                 PopulateProductComboBox();
                 if (DropDownList2.SelectedItem != null)
                 {
 
                     PopulateVersionComboBox();
                 }
+                //**************Have to replace these events***********//
                 // Create a timer and set a two second interval.
                 aTimer = new System.Timers.Timer();
                 aTimer.Interval = 60000 + 60000 + 60000;
@@ -46,66 +37,67 @@ namespace WebApplication1
 
                 // Start the timer
                 aTimer.Enabled = true;
+
             }
 
-            //PopulateProductComboBox();
-            //if (DropDownList2.SelectedItem != null)
-            //{
-
-            //    PopulateVersionComboBox();
-            //}
+         
         }
-
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        //UserInterface Events
+     protected void Button1_Click(object sender, EventArgs e)
         {
-            business = new Business();
-            PopulateProductComboBox();
-            if (DropDownList2.SelectedItem != null)
-            {
-
-                PopulateVersionComboBox();
-            }
-            List<string> blab = ((Business)Session["Database"]).GetAllProduct();
+            string version = DropDownList1.SelectedItem.ToString();
+            progress1.Attributes["data-percent"] = Percentage("OnTimeShipment", version);
+            progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
+            progress3.Attributes["data-percent"] = Percentage("TestCoverage", version);
         }
+     protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            PopulateVersionComboBox();
+        }
+     
+      protected void kpiSelectorDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowTrendLines();
+            
+        }
+        //private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        //   {
+        //       business = new Business();
+        //       PopulateProductComboBox();
+        //       if (DropDownList2.SelectedItem != null)
+        //       {
+
+        //           PopulateVersionComboBox();
+        //       }
+        //       List<string> blab = ((Business)Session["Database"]).GetAllProduct();
+        //   }
+
+
+
+
+       //All the required sub-functions
         public void PopulateProductComboBox()
         {
             foreach (string product in ((Business)Session["Database"]).GetAllProduct())
                 if (DropDownList2.Items.Contains(DropDownList2.Items.FindByText(product)) == false)
                 {
-                    //code..
-                    DropDownList2.Items.Add((product));
+                   DropDownList2.Items.Add((product));
                 }
 
-            //{  }
 
         }
 
         public void PopulateVersionComboBox()
         {
             DropDownList1.Items.Clear();
-            string temp = DropDownList2.SelectedItem.ToString();
-            foreach (string version in ((Business)Session["Database"]).GetAllVersion(temp))
-            { DropDownList1.Items.Add(version); }
+            string selectedProduct = DropDownList2.SelectedItem.ToString();
+            foreach (string version in ((Business)Session["Database"]).GetAllVersion(selectedProduct))
+            {
+                DropDownList1.Items.Add(version);
+            }
         }
 
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-            string version = DropDownList1.SelectedItem.ToString();
-            progress1.Attributes["data-percent"] = Percentage("OnTimeShipment", version);
-            progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
-            progress3.Attributes["data-percent"] = Percentage("TestCoverage", version);
-
-
-        }
-
-        protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
-        {
-            PopulateVersionComboBox();
-        }
-
-
+            
 
         public string Percentage(string kpiType, string version)
         {
@@ -123,7 +115,6 @@ namespace WebApplication1
         }
 
 
-
         public decimal[] RemoveZeros(decimal[] source)
         {
 
@@ -136,17 +127,16 @@ namespace WebApplication1
             string[] r = source.Where(i => i != null).ToArray();
             return r;
         }
-
-        protected void ddlCountries_SelectedIndexChanged(object sender, EventArgs e)
+        public void ShowTrendLines()
         {
             DataTable dt = new DataTable();
-            dt = ((Business)Session["Database"]).GraphInfo();
+            dt = ((Business)Session["Database"]).GetTrendlineInformation();
 
             string[] x = new string[dt.Rows.Count];
             decimal[] y = new decimal[dt.Rows.Count];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                if (dt.Rows[i]["KpiType"].ToString() == ddlCountries.SelectedItem.ToString()
+                if (dt.Rows[i]["KpiType"].ToString() == kpiSelectorDropDown.SelectedItem.ToString()
                     && dt.Rows[i]["Product"].ToString() == DropDownList2.SelectedItem.ToString())
                 {
                     y[i] = Convert.ToInt32(dt.Rows[i][3]);
@@ -157,10 +147,10 @@ namespace WebApplication1
             LineChart1.Series.Add(new AjaxControlToolkit.LineChartSeries { Data = RemoveZeros(y) });
             LineChart1.CategoriesAxis = string.Join(",", RemoveZeross(x));
             LineChart1.Series[0].LineColor = "#f75567";
-
-           
+            LineChart1.Series[0].Name = kpiSelectorDropDown.SelectedItem+"-Percentage";
             LineChart1.Visible = true;
         }
+       
 
        
     }
