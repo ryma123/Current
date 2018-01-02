@@ -41,14 +41,14 @@ namespace DataAccess
             foreach (Row row in rows)
             {
                 //Use the first row to add columns to DataTable.
-                if (row.RowIndex.Value == 1)
+                if (row.RowIndex.Value == 4)
                 {
                     foreach (Cell cell in row.Descendants<Cell>())
                     {
                         dataTable.Columns.Add(GetValue(document, cell));
                     }
                 }
-                else
+                if (row.RowIndex.Value >4)
                 {
                     //Add rows to DataTable.
                     dataTable.Rows.Add();

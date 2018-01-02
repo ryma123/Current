@@ -49,6 +49,21 @@ namespace WebApplication1
             progress1.Attributes["data-percent"] = Percentage("OnTimeShipment", version);
             progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
             progress3.Attributes["data-percent"] = Percentage("TestCoverage", version);
+            if (Convert.ToInt32(progress1.Attributes["data-percent"]) >= 90)
+            { progress1.Attributes["data-color"] = "#f75567,#ff0066"; }
+            else
+            { progress1.Attributes["data-color"] = "#f75567,#12b321"; }
+           
+            // progress1.Attributes["data-color"] = "#f75567,#12b321";
+            if (Convert.ToInt32(progress2.Attributes["data-percent"]) >= 90)
+            { progress2.Attributes["data-color"] = "#f75567,#ff0066"; }
+            else
+            { progress2.Attributes["data-color"] = "#f75567,#12b321"; }
+            if (Convert.ToInt32(progress3.Attributes["data-percent"]) >= 90)
+            { progress3.Attributes["data-color"] = "#f75567,#ff0066"; }
+            else
+            { progress3.Attributes["data-color"] = "#f75567,#12b321"; }
+
         }
      protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
         {

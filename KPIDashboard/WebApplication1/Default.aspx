@@ -37,20 +37,20 @@
                     <h2 style="font-family: Calibri"><strong>On Time Shipment</strong></h2>
 
 
-                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#a456b1,#12b321" runat="server" id="progress1">
+                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress1">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h2 style="font-family: Calibri"><strong>Code Freeze</strong></h2>
 
 
-                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#a456b1,#12b321" runat="server" id="progress2">
+                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress2">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h2 style="font-family: Calibri"><strong>Test Coverage</strong></h2>
 
-                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#a456b1,#12b321" runat="server" id="progress3"></div>
+                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress3"></div>
 
 
 
