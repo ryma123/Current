@@ -41,14 +41,14 @@ namespace DataAccess
             foreach (Row row in rows)
             {
                 //Use the first row to add columns to DataTable.
-                if (row.RowIndex.Value == 4)
+                if (row.RowIndex.Value == 10)
                 {
                     foreach (Cell cell in row.Descendants<Cell>())
                     {
                         dataTable.Columns.Add(GetValue(document, cell));
                     }
                 }
-                if (row.RowIndex.Value >4)
+                if (row.RowIndex.Value >10)
                 {
                     //Add rows to DataTable.
                     dataTable.Rows.Add();
@@ -64,12 +64,26 @@ namespace DataAccess
 
         private string GetValue(SpreadsheetDocument document, Cell cell)
         {
-            string value = cell.CellValue.InnerText;
-            if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+
+            if (cell.CellValue != null)
             {
-                return document.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
+                string value = cell.CellValue.Text;
+
+                if (value == "Effort")
+                {
+
+
+                }
+
+                if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+                {
+                    string s = document.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
+                    return s;
+                }
+                return value;
             }
-            return value;
+            else
+            { return ""; }
         }
       
      
