@@ -2,9 +2,9 @@
 {
     class CodeFreeze : KPI
     {
-        public int FreezePeriod { get; set; }
-        public int TotalFTE { get; set; }
-        public int Effort { get; set; }
-
+        public string FreezePeriod { get; set; }
+        public string TotalFTE { get; set; }
+        public string Effort { get; set; }
+        public string EffortPercentage { get; set; }
     }
 }

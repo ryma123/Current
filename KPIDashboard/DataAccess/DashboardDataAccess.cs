@@ -19,26 +19,31 @@ namespace DataAccess
           
         }
 
-       
+
 
 
         public void AddToDatabase(DataTable dataTable)
         {
             var numberOfRows = dataTable.Rows.Count;
             for (int row = 0; row < numberOfRows; row++)
-            {  
+            {
                 var productName = dataTable.Rows[row]["Product"];
                 var releaseId = dataTable.Rows[row]["Release"];
-                var location = dataTable.Rows[row]["Location"];
-                int freezePeriod = int.Parse(dataTable.Rows[row]["FreezePeriod"].ToString());
-                int totalFTE = int.Parse(dataTable.Rows[row]["TotalFTE"].ToString());
-                int effort = int.Parse(dataTable.Rows[row]["Effort"].ToString());
-                var plannedTest = dataTable.Rows[row]["PlannedTest"];
-                var passedTest = dataTable.Rows[row]["PassedTest"];
-                var executedTest = dataTable.Rows[row]["ExecutedTest"];
-                int plannedUseCase = int.Parse(dataTable.Rows[row]["PlannedUseCase"].ToString());
-                int actualUsCase = int.Parse(dataTable.Rows[row]["ActualUsCase"].ToString());
-               
+                var location = dataTable.Rows[row]["Site"];
+                var freezePeriod =dataTable.Rows[row]["Freeze period (WORK DAYS)"];
+                var totalFTE = dataTable.Rows[row]["Total FTEs"];
+                var effort =dataTable.Rows[row]["Effort (WORK DAYS)"];
+                var codeFreezePercentage = dataTable.Rows[row]["% Effort"];
+
+                var plannedTest = dataTable.Rows[row]["planned"];
+                var executedTest = dataTable.Rows[row]["executed"];
+                var notExecutedTestPercentage = dataTable.Rows[row]["% not executed"];
+
+                var passedTest = dataTable.Rows[row]["passed"];
+                var notPassedTestPercentage = dataTable.Rows[row]["% not passed"];
+
+
+
 
                 using (var database = new RelationCont())
                 {
@@ -46,12 +51,16 @@ namespace DataAccess
                     var release = database.Release.Add(new Release() { Product = product, ReleaseName = releaseId.ToString() });
                     if (!(DuplicateDataCheck(release, database)))
                     {
-                        var kpi = database.kpi.Add(new OnTimeShipment() { Product = product, PlannedUseCases = plannedUseCase,
-                                                                          ActualUseCases = actualUsCase });
+                        var kpi = database.kpi.Add(new TestNotExecuted()
+                        {
+                            Product = product,
+                            Planned = plannedTest.ToString(),
+                            Executed = executedTest.ToString(),
+                            NotExecutedPerdcentage = notExecutedTestPercentage.ToString()
+                        });
                         var kpirelease = database.Releasekpi.Add(new JoinReleaseKpi() { kpi = kpi, Release = release });
-                        database.kpi.Add(new CodeFreeze() { Product = product, FreezePeriod = freezePeriod, Effort = effort, TotalFTE = totalFTE });
-                        database.kpi.Add(new TestCoverage() { Product = product, Executed = executedTest.ToString(),
-                                                              Planned = plannedTest.ToString(), Passed = passedTest.ToString() });
+                        database.kpi.Add(new CodeFreeze() { Product = product, FreezePeriod = freezePeriod.ToString(), Effort = effort.ToString(), TotalFTE = totalFTE.ToString(), EffortPercentage = codeFreezePercentage.ToString() });
+                        database.kpi.Add(new FailedTest() { Product = product, Passed = passedTest.ToString(), NotPassedPerdcentage = notPassedTestPercentage.ToString() });
                         database.SaveChanges();
                     }
                 }
@@ -88,51 +97,7 @@ namespace DataAccess
         }
 
 
-        public string OnTimeShipmentPercentageCalculator(KPI kpi)
-        {
-            if (((OnTimeShipment)kpi).PlannedUseCases == 0)
-            {
-                return "OnTimeShipment" + 0;
-            }
-            else
-            {
-                return "OnTimeShipment" + (int)Math.Round((double)
-                (100 * ((OnTimeShipment)kpi).ActualUseCases) / ((OnTimeShipment)kpi).PlannedUseCases);
-            }
-        }
-
-
-        public string CodeFreezePercentageCalculator(KPI kpi)
-        {
-            if (((CodeFreeze)kpi).FreezePeriod * ((CodeFreeze)kpi).TotalFTE == 0)
-            {
-                return "CodeFreeze" + 0;
-            }
-            else
-            {
-                return "CodeFreeze" + (int)Math.Round((double)
-                (100 * ((CodeFreeze)kpi).Effort) / (((CodeFreeze)kpi).FreezePeriod * ((CodeFreeze)kpi).TotalFTE));
-            }
-        }
-
-        
-        public string TestCoveragePercentageCalculator(KPI kpi)
-        {
-            if (((TestCoverage)kpi).Executed == "no data" || ((TestCoverage)kpi).Passed == "no data" || ((TestCoverage)kpi).Executed == "0")
-            {
-                return "TestCoverage" + 0;
-            }
-
-            else
-            {
-                return "TestCoverage" + (int)Math.Round((double)(100 * int.Parse(
-               ((TestCoverage)kpi).Passed)) / int.Parse(((TestCoverage)kpi).Executed));
-
-            }
-
-        }
-
-
+       
         public List<string> GetAllVersions(string selectedProduct)
         {
             var versionlist = new List<string>();
@@ -148,12 +113,12 @@ namespace DataAccess
             }
         }
 
-    
+
         public List<string> PercentageCalculator(string selectedProduct)
         {
             var percentageList = new List<string>();
             using (var database = new RelationCont())
-            {  
+            {
                 foreach (Release releas in database.Release)
                 {
                     { Release release = releas; }
@@ -176,27 +141,64 @@ namespace DataAccess
                 {
                     if (releaseKpi.Release.ReleaseName == selectedProduct)
                     {
-                       
-                            foreach (var kpi in database.kpi)
-                            {
-                                if (releaseKpi.kpi.Product.Id == kpi.Product.Id)
-                                {
 
-                                    if (kpi is OnTimeShipment)
-                                    {
-                                        percentageList.Add(OnTimeShipmentPercentageCalculator(kpi));
-                                    }
-                                    if (kpi is CodeFreeze)
-                                    {
-                                        percentageList.Add(CodeFreezePercentageCalculator(kpi));
-                                    }
-                                    if (kpi is TestCoverage)
-                                    {
-                                        percentageList.Add(TestCoveragePercentageCalculator(kpi));
+                        foreach (var kpi in database.kpi)
+                        {
+                            if (releaseKpi.kpi.Product.Id == kpi.Product.Id)
+                            {
+
+                                if (kpi is TestNotExecuted)
+                                {  var percentage = ((TestNotExecuted)kpi).NotExecutedPerdcentage;
+                                    if (percentage.StartsWith("0")||percentage.StartsWith("1")||percentage.StartsWith("2") || percentage.StartsWith("3")||
+                                       percentage.StartsWith("4") || percentage.StartsWith("5")||percentage.StartsWith("6") || percentage.StartsWith("7")||
+                                        percentage.StartsWith("8") || percentage.StartsWith("9"))
+                                        {
+                                      //  var   percentage2 = int.Parse(percentage )*100;
+                                        percentageList.Add("NotExecuted"+percentage);
+                                         }
+                                    else
+                                        {
+                                        percentageList.Add("NotExecuted" + 0);
+
                                     }
                                 }
-                            }                 
-                      }
+                                if (kpi is CodeFreeze)
+                                {
+                                  
+                                    var percentage = ((CodeFreeze)kpi).EffortPercentage;
+                                    if (percentage.StartsWith("0") || percentage.StartsWith("1") || percentage.StartsWith("2") || percentage.StartsWith("3") ||
+                                       percentage.StartsWith("4") || percentage.StartsWith("5") || percentage.StartsWith("6") || percentage.StartsWith("7") ||
+                                        percentage.StartsWith("8") || percentage.StartsWith("9"))
+                                    {
+                                      //  var percentage2 = int.Parse(percentage) * 100;
+                                        percentageList.Add("CodeFreeze" + percentage);
+                                    }
+                                    else
+                                    {
+                                        percentageList.Add("CodeFreeze" + 0);
+
+                                    }
+                                }
+                                if (kpi is FailedTest)
+                                {
+
+                                    var percentage = ((FailedTest)kpi).NotPassedPerdcentage;
+                                    if (percentage.StartsWith("0") || percentage.StartsWith("1") || percentage.StartsWith("2") || percentage.StartsWith("3") ||
+                                       percentage.StartsWith("4") || percentage.StartsWith("5") || percentage.StartsWith("6") || percentage.StartsWith("7") ||
+                                        percentage.StartsWith("8") || percentage.StartsWith("9"))
+                                    {
+                                       // var percentage2 = int.Parse(percentage) * 100;
+                                        percentageList.Add("FailedTest" + percentage);
+                                    }
+                                    else
+                                    {
+                                        percentageList.Add("FailedTest" + 0);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
 
 
                 }

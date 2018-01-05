@@ -76,13 +76,13 @@
     <Compile Include="ExcelReader.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="Models\CodeFreeze.cs" />
+    <Compile Include="Models\FailedTest.cs" />
     <Compile Include="Models\JoinReleaseKpi.cs" />
     <Compile Include="Models\KPI.cs" />
-    <Compile Include="Models\OnTimeShipment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\RelationCont.cs" />
     <Compile Include="Models\Release.cs" />
-    <Compile Include="Models\TestCoverage.cs" />
+    <Compile Include="Models\TestNotExecuted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

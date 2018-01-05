@@ -46,9 +46,9 @@ namespace WebApplication1
      protected void Button1_Click(object sender, EventArgs e)
         {
             string version = DropDownList1.SelectedItem.ToString();
-            progress1.Attributes["data-percent"] = Percentage("OnTimeShipment", version);
+            progress1.Attributes["data-percent"] = Percentage("NotExecuted", version);
             progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
-            progress3.Attributes["data-percent"] = Percentage("TestCoverage", version);
+            progress3.Attributes["data-percent"] = Percentage("FailedTest", version);
             if (Convert.ToInt32(progress1.Attributes["data-percent"]) >= 90)
             { progress1.Attributes["data-color"] = "#f75567,#ff0066"; }
             else

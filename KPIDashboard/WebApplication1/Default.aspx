@@ -12,11 +12,11 @@
                 <ContentTemplate>
                     <fieldset>
                         <asp:Label ID="Label3" runat="server" Enabled="False" Text="Select the product"></asp:Label>
-                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Width="103px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Width="141px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                             <asp:ListItem Text="" Value="0"  />
                         </asp:DropDownList>
                         &nbsp;<asp:Label ID="Label2" runat="server" Enabled="False" Text="Select the version"></asp:Label>
-                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="103px">
+                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="142px">
                         </asp:DropDownList>
 
 
@@ -34,7 +34,7 @@
              
       
                                <div class="col-md-4">
-                    <h2 style="font-family: Calibri"><strong>On Time Shipment</strong></h2>
+                    <h2 style="font-family: Calibri"><strong>Not Executed Test</strong></h2>
 
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress1">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h2 style="font-family: Calibri"><strong>Test Coverage</strong></h2>
+                    <h2 style="font-family: Calibri"><strong>Failed Test</strong></h2>
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress3"></div>
 
