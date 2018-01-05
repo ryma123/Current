@@ -25,13 +25,23 @@ namespace DataAccess
                 IEnumerable<Row> rows = worksheet.GetFirstChild<SheetData>().Descendants<Row>();
                 //Fill DataTable.
                 FillDataTable(rows, document);
-              
+                
             
              }
         }
         public object Read()
         {
             ReadExcel();
+            var numberOfRows = dataTable.Rows.Count;
+            for (int row = 0; row <=52; row++)
+            {
+                var visibility = int.Parse(dataTable.Rows[row]["Visible"].ToString());
+
+                if (visibility == 0)
+
+                { dataTable.Rows[row].Delete(); }
+                
+            }
             return dataTable;
         }
 
@@ -54,8 +64,9 @@ namespace DataAccess
                     dataTable.Rows.Add();
                     int i = 0;
                     foreach (Cell cell in row.Descendants<Cell>())
-                    {
+                    { 
                         dataTable.Rows[dataTable.Rows.Count - 1][i] = GetValue(document, cell);
+
                         i++;
                     }
                 }
@@ -69,11 +80,7 @@ namespace DataAccess
             {
                 string value = cell.CellValue.Text;
 
-                if (value == "Effort")
-                {
-
-
-                }
+              
 
                 if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
                 {
