@@ -12,11 +12,11 @@
                 <ContentTemplate>
                     <fieldset>
                         <asp:Label ID="Label3" runat="server" Enabled="False" Text="Select the product"></asp:Label>
-                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Width="141px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Width="211px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Height="33px">
                             <asp:ListItem Text="" Value="0"  />
                         </asp:DropDownList>
                         &nbsp;<asp:Label ID="Label2" runat="server" Enabled="False" Text="Select the version"></asp:Label>
-                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="142px">
+                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="213px" Height="38px">
                         </asp:DropDownList>
 
 
@@ -39,20 +39,27 @@
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress1">
                     </div>
+                                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label4" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
+   
                 </div>
                 <div class="col-md-4">
-                    <h2 style="font-family: Calibri"><strong>Code Freeze</strong></h2>
+                    <h2 style="font-family: Calibri"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Code Freeze</strong></h2>
 
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress2">
                     </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label1" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
                 </div>
                 <div class="col-md-4">
-                    <h2 style="font-family: Calibri"><strong>Failed Test</strong></h2>
+                    <h2 style="font-family: Calibri"><strong>&nbsp;&nbsp;&nbsp;&nbsp; Failed Test</strong></h2>
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress3"></div>
 
-
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label5" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
+   
 
 
                     <script>
