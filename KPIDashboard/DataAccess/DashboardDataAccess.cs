@@ -10,9 +10,7 @@ namespace DataAccess
 {
     public class DashboardDataAccess
     {
-       
-     //   public IReader reader;
-    //    DataTable dataTable;
+ 
         public DashboardDataAccess()
         {
             IReader   reader = new ExcelReader();
@@ -50,12 +48,10 @@ namespace DataAccess
                 using (var database = new RelationCont())
                 {    
                     var product = new Product() { Productname = productName.ToString(), Location = location.ToString() };
-                    if (!(DuplicateProductCheck(product, database)))
-                    { database.Product.Add(product); }
+                    database.Product.Add (product);
                     var release = new Release() { Product = product, ReleaseName = releaseId.ToString() };
                     if (!(DuplicateDataCheck(release, database)))
                     { database.Release.Add(release); }
-                       
                     if (!(DuplicateDataCheck(release, database)))
                     {
                         var kpi = database.kpi.Add(new TestNotExecuted()
@@ -88,20 +84,7 @@ namespace DataAccess
             }
             return false;
         }
-        public bool DuplicateProductCheck(Product product, RelationCont database)
-        {
-            foreach (Product productt in database.Product)
-            {
-                if (productt.Productname == product.Productname)
-
-                {
-                    return true;
-                }
-
-            }
-            return false;
-        }
-
+      
         public List<string> GetAllProduct()
         {
             var productList = new List<string>();
@@ -134,33 +117,34 @@ namespace DataAccess
 
         public string GetPErcentageValue(string percentage)
         {
-            if (percentage != null)
+            if (percentage != null && percentage!="")
             {
                   if (char.IsNumber(percentage[0]))
                   {
                      if (percentage.Contains('E'))
                       {
-                        var convertExponent = double.Parse("percentage", CultureInfo.InvariantCulture);
-                        percentage = convertExponent.ToString();
-                        var percentageInt = int.Parse(percentage) * 100;
-                        return percentageInt.ToString();
-                      }
+                        var convertExponent = double.Parse(percentage, CultureInfo.InvariantCulture);
+                                        
+                        var percentageDouble = Convert.ToDouble(percentage) * 100;
+                       return Math.Round(percentageDouble, MidpointRounding.AwayFromZero).ToString();
+                        
+                       }
                       else
                       {
-                        var percentageInt = int.Parse(percentage) * 100;
-                        return percentageInt.ToString();
-
+                        var percentageDouble = Convert.ToDouble(percentage) * 100;
+                        return Math.Round(percentageDouble, MidpointRounding.AwayFromZero).ToString();
+                        
                        }
 
-               }
+                 }
                   else
                   {
-                    return "0";
+                    return "No Data"+"0";
 
                    }
             }
             else
-            { return "0"; }
+            { return "No Data" + "0"; }
         }
         public List<string> PercentageCalculator(string selectedProduct)
         {

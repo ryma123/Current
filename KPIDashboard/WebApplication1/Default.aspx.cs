@@ -63,7 +63,11 @@ namespace WebApplication1
             { progress3.Attributes["data-color"] = "#f75567,##db0a23"; }
             else
             { progress3.Attributes["data-color"] = "#f75567,#12b321"; }
-
+            var grades= ((Business)Session["Database"]).GetGrade(version);
+            Label4.Text = grades[0];
+            Label1.Text = grades[1];
+            Label5.Text = grades[2];
+            
         }
      protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
         {
@@ -122,7 +126,6 @@ namespace WebApplication1
                 if (percentage.StartsWith(kpiType))
                 {
                     stringPercentage = Regex.Match(percentage, @"\d+").Value;
-
                 }
 
             }

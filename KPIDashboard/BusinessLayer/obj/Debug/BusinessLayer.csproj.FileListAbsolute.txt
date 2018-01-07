@@ -42,3 +42,14 @@ C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\BusinessLayer\bin\Debug\Enti
 C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\Ryma\Documents\GitHub\Current\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.dll
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\DataAccess.pdb
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\Ryma\Desktop\rrkpi\KPIDashboard\BusinessLayer\obj\Debug\BusinessLayer.pdb
