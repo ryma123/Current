@@ -88,9 +88,11 @@ namespace BusinessLayer
               dataTable.Columns.Add("Percentage", typeof(String));
               foreach (var product in GetAllProduct())
                 {
-                  foreach(var version in GetAllVersion(product))
+                var b = GetAllVersion(product);
+                foreach (var version in b )
                     {
-                      foreach(var percentage in GetPercent(version))
+                    var a = GetPercent(version);
+                      foreach (var percentage in a)
                         {
                         
                         Match result = new Regex(@"([a-zA-Z]+)(\d+)").Match(percentage);

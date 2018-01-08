@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 using System.Data;
+using System.Web.UI.WebControls;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace WebApplication1
 {
@@ -24,7 +26,7 @@ namespace WebApplication1
                     PopulateVersionComboBox();
                 }
                 //**************Have to replace these events***********//
-                // Create a timer and set a two second interval.
+                // Create colour timer and set colour two second interval.
                 aTimer = new System.Timers.Timer();
                 aTimer.Interval = 60000 + 60000 + 60000;
 
@@ -46,7 +48,7 @@ namespace WebApplication1
      protected void Button1_Click(object sender, EventArgs e)
         {
             string version = DropDownList1.SelectedItem.ToString();
-            progress1.Attributes["data-percent"] = Percentage("NotExecuted", version);
+            progress1.Attributes["data-percent"] = Percentage("TestNotExecuted", version);
             progress2.Attributes["data-percent"] = Percentage("CodeFreeze", version);
             progress3.Attributes["data-percent"] = Percentage("FailedTest", version);
             if (Convert.ToInt32(progress1.Attributes["data-percent"]) >= 90)
@@ -65,9 +67,12 @@ namespace WebApplication1
             { progress3.Attributes["data-color"] = "#f75567,#12b321"; }
             var grades= ((Business)Session["Database"]).GetGrade(version);
             Label4.Text = grades[0];
+            GetLabelColour(Label4, Label4.Text);
             Label1.Text = grades[1];
+            GetLabelColour(Label1, Label1.Text);
             Label5.Text = grades[2];
-            
+            GetLabelColour(Label5, Label5.Text);
+
         }
      protected void DropDownList2_SelectedIndexChanged(Object sender, EventArgs e)
         {
@@ -136,22 +141,60 @@ namespace WebApplication1
         public decimal[] RemoveZeros(decimal[] source)
         {
 
-            decimal[] r=  source.Where(i => i != 0 ).ToArray();
+            decimal[] r = source.Where(i => i != 5000).ToArray();
             return r;
         }
+       
         public string[] RemoveZeross(string[] source)
         {
 
             string[] r = source.Where(i => i != null).ToArray();
             return r;
         }
+        public void GetLabelColour(Label label,string value)
+        {
+           
+            switch (value)
+            {
+              
+                    case "A":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#009900");
+                    break;
+
+                    case "B":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#80ff80");
+                    break;
+
+                    case "C":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                    break;
+
+                    case "D":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff9900");
+                    break;
+
+                    case "E":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff3300");
+                     break;
+                   
+                    case "No Data":
+                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#669999");
+                    break;
+                    
+            }
+           
+        }
+       // public void GetBarColour()
         public void ShowTrendLines()
         {
+            
             DataTable dt = new DataTable();
             dt = ((Business)Session["Database"]).GetTrendlineInformation();
 
             string[] x = new string[dt.Rows.Count];
             decimal[] y = new decimal[dt.Rows.Count];
+           
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 if (dt.Rows[i]["KpiType"].ToString() == kpiSelectorDropDown.SelectedItem.ToString()
@@ -160,17 +203,51 @@ namespace WebApplication1
                     y[i] = Convert.ToInt32(dt.Rows[i][3]);
                     x[i] = dt.Rows[i][1].ToString();
                 }
+                else
+                {
+                    y[i] = Convert.ToInt32("5000");
+                   
+                }
 
             }
-            LineChart1.Series.Add(new AjaxControlToolkit.LineChartSeries { Data = RemoveZeros(y) });
-            LineChart1.CategoriesAxis = string.Join(",", RemoveZeross(x));
-            LineChart1.Series[0].LineColor = "#f75567";
-            LineChart1.Series[0].Name = kpiSelectorDropDown.SelectedItem+"-Percentage";
-            LineChart1.Visible = true;
-        }
-       
 
-       
-    }
+            Chart2.Series[0].Points.DataBindXY(RemoveZeross(x), RemoveZeros(y));
+            Chart2.Series[0].ChartType = SeriesChartType.Column;
+
+            Chart2.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            Chart2.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            Chart2.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+
+            // Chart2.Legends[0].Enabled = true;
+             Chart2.Visible = true;
+
+
+            Chart2.Series[0]["PointWidth"]= "0.3";
+            foreach (DataPoint point in Chart2.Series[0].Points)
+            {
+
+                if (point.YValues[0] >= 0 && point.YValues[0] < 5)
+                { point.Color = System.Drawing.ColorTranslator.FromHtml("#009900"); }
+                if (point.YValues[0] >= 5 && point.YValues[0] < 15)
+                { point.Color = System.Drawing.ColorTranslator.FromHtml("#80ff80"); }
+                if (point.YValues[0] >= 15 && point.YValues[0] < 30)
+                { point.Color = System.Drawing.ColorTranslator.FromHtml("#ffff00"); }
+                if (point.YValues[0] >= 30 && point.YValues[0] < 40)
+                { point.Color = System.Drawing.ColorTranslator.FromHtml("#009900"); }
+                if (point.YValues[0] >= 40 && point.YValues[0] <= 100)
+                { point.Color = System.Drawing.ColorTranslator.FromHtml("#ff3300"); }
+
+            }
+                //       else
+                //       { LineChart1.Series[0].BarColor = "#000099"; }
+                //   }
+                ////   LineChart1.Series[0].BarColor = "#f75567";
+                //   LineChart1.Series[0].Name = kpiSelectorDropDown.SelectedItem+"-Percentage";
+
+                // Chart2.Visible = true;
+            }
+
+
+        }
 }
 

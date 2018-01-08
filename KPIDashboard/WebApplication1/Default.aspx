@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
 
@@ -86,23 +87,42 @@
                 <asp:DropDownList ID="kpiSelectorDropDown" runat="server" OnSelectedIndexChanged="kpiSelectorDropDown_SelectedIndexChanged"
                     AutoPostBack="True" Width="239px">
                      <asp:ListItem>Select KPI</asp:ListItem>
-                    <asp:ListItem>OnTimeShipment</asp:ListItem>
+                    <asp:ListItem>TestNotExecuted</asp:ListItem>
                     <asp:ListItem>CodeFreeze</asp:ListItem>
-                    <asp:ListItem>TestCoverage</asp:ListItem>
+                    <asp:ListItem>FailedTest</asp:ListItem>
                 </asp:DropDownList>
                       
                 <br />
             
-                          <cc1:LineChart ID="LineChart1" runat="server" ChartHeight="300" ChartWidth="1000" ChartTitleColor="#0E426C" Visible="False"
-                            CategoryAxisLineColor="#eeeeee" ValueAxisLineColor="#eeeeee" LineColor="#1ac92f"
-                            BaseLineColor="#000000" Style="margin-left: 0px; margin-right: 0px; margin-top: 0px" Font-Names="version-percentage" ForeColor="#EEEEEE" BackColor="#EEEEEE" Width="1005px" TooltipBackgroundColor="#ffffff" TooltipBorderColor="#ffffff" TooltipFontColor="#000000"  Font-Size="8pt" DisplayValues="False" AreaDataLabel="%" CategoriesAxis="" ChartTitle="" Theme="" ValueAxisLines="0"  >
-                         </cc1:LineChart>
+                         
 
-                 
+                 <asp:Chart ID="Chart2" runat="server" Width="943px" Height="289px">
+                                   <series>
+                                       <asp:Series Name="Series1" ToolTip=" #VALY%">
+                                       </asp:Series>
+                                   </series>
+
+                     <Legends>
+        <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Default" LegendStyle="Row" BackColor="White" />
+    </Legends>
+                                   <chartareas>
+                                       <asp:ChartArea Name="ChartArea1">
+                                       </asp:ChartArea>
+                                   </chartareas>
+                               </asp:Chart>
+  
    </fieldset>
                 </ContentTemplate>
             </asp:UpdatePanel>
   
+                 
+
+              
+
+
+              
+      
+                               
                  
 
               

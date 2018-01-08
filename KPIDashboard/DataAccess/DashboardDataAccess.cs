@@ -139,12 +139,14 @@ namespace DataAccess
                  }
                   else
                   {
-                    return "No Data"+"0";
-
+                    //  return " No Data"+"0";
+                    return "0";
                    }
             }
             else
-            { return "No Data" + "0"; }
+            {// return " No Data" + "0"; 
+                return "0";
+            }
         }
         public List<string> PercentageCalculator(string selectedProduct)
         {
@@ -181,7 +183,7 @@ namespace DataAccess
 
                                 if (kpi is TestNotExecuted)
                                 {    var percentage = ((TestNotExecuted)kpi).NotExecutedPerdcentage;
-                                     percentageList.Add("NotExecuted" + GetPErcentageValue(percentage));
+                                     percentageList.Add("TestNotExecuted" + GetPErcentageValue(percentage));
                                 }
                                 if (kpi is CodeFreeze)
                                 {
