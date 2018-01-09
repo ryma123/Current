@@ -6,6 +6,7 @@
 			progressColor: '#4b86db',
 			percent: 0,
 			duration: 2000
+            
 		};	
 		
 		$(this).each(function () {

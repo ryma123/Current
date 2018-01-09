@@ -38,10 +38,10 @@
                     <h2 style="font-family: Calibri"><strong>Not Executed Test</strong></h2>
 
 
-                    <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress1">
+                    <div class="progress-bar position" data-percent="00" data-duration="1000"   data-color="#f75567,#12b321" runat="server" id="progress1">
                     </div>
-                                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label4" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
+                                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label4" runat="server" Enabled="False" Text=" " Font-Size="50" Font-Bold="True" BackColor="#EEEEEE" ForeColor="White"></asp:Label>
    
                 </div>
                 <div class="col-md-4">
@@ -50,16 +50,16 @@
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress2">
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label1" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label1" runat="server" Enabled="False" Text="   " Font-Size="50" Font-Bold="True" BackColor="#EEEEEE" ForeColor="White"></asp:Label>
                 </div>
                 <div class="col-md-4">
                     <h2 style="font-family: Calibri"><strong>&nbsp;&nbsp;&nbsp;&nbsp; Failed Test</strong></h2>
 
                     <div class="progress-bar position" data-percent="00" data-duration="1000" data-color="#f75567,#12b321" runat="server" id="progress3"></div>
 
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label5" runat="server" Enabled="False" Text="   A" Font-Size="XX-Large" Font-Bold="True" BackColor="#33CC33" ForeColor="White"></asp:Label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label5" runat="server" Enabled="False" Text="   " Font-Size="50" Font-Bold="True" BackColor="#EEEEEE" ForeColor="White"></asp:Label>
    
 
 
@@ -96,14 +96,14 @@
             
                          
 
-                 <asp:Chart ID="Chart2" runat="server" Width="943px" Height="289px">
+                 <asp:Chart ID="Chart2" runat="server" Width="943px" Height="289px" BackImageTransparentColor="238, 238, 238">
                                    <series>
-                                       <asp:Series Name="Series1" ToolTip=" #VALY%">
+                                       <asp:Series Name="Series1" ToolTip=" #VALY%" Legend="Percentage">
                                        </asp:Series>
                                    </series>
 
                      <Legends>
-        <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Default" LegendStyle="Row" BackColor="White" />
+        <asp:Legend Alignment="Center" Docking="Top" IsTextAutoFit="False" Name="Percentage" LegendStyle="Row" BackColor="White" />
     </Legends>
                                    <chartareas>
                                        <asp:ChartArea Name="ChartArea1">

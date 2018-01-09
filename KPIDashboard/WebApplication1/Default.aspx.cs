@@ -15,6 +15,7 @@ namespace WebApplication1
         private static System.Timers.Timer aTimer;
         protected void Page_Load(object sender, EventArgs e)
         {
+     
             if (!IsPostBack)
             {
                 business = new Business();
@@ -158,33 +159,33 @@ namespace WebApplication1
             {
               
                     case "A":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#009900");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#009900");
                     break;
 
                     case "B":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#80ff80");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#80ff80");
                     break;
 
                     case "C":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
                     break;
 
                     case "D":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff9900");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff9900");
                     break;
 
                     case "E":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff3300");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff3300");
                      break;
                    
                     case "No Data":
-                    label.BackColor = System.Drawing.ColorTranslator.FromHtml("#669999");
+                    label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#669999");
                     break;
                     
             }
            
         }
-       // public void GetBarColour()
+   
         public void ShowTrendLines()
         {
             
@@ -210,7 +211,8 @@ namespace WebApplication1
                 }
 
             }
-
+            Chart2.ChartAreas["ChartArea1"].AxisY.Maximum = 100;
+            Chart2.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
             Chart2.Series[0].Points.DataBindXY(RemoveZeross(x), RemoveZeros(y));
             Chart2.Series[0].ChartType = SeriesChartType.Column;
 
@@ -218,8 +220,8 @@ namespace WebApplication1
             Chart2.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             Chart2.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
 
-            // Chart2.Legends[0].Enabled = true;
-             Chart2.Visible = true;
+          
+            Chart2.Visible = true;
 
 
             Chart2.Series[0]["PointWidth"]= "0.3";
@@ -238,14 +240,9 @@ namespace WebApplication1
                 { point.Color = System.Drawing.ColorTranslator.FromHtml("#ff3300"); }
 
             }
-                //       else
-                //       { LineChart1.Series[0].BarColor = "#000099"; }
-                //   }
-                ////   LineChart1.Series[0].BarColor = "#f75567";
-                //   LineChart1.Series[0].Name = kpiSelectorDropDown.SelectedItem+"-Percentage";
-
-                // Chart2.Visible = true;
-            }
+            Chart2.Series[0].IsValueShownAsLabel = true;
+            Chart2.Series[0].Name = kpiSelectorDropDown.SelectedItem + "-Percentage of "+DropDownList2.SelectedItem;  Chart2.Legends[0].Docking = Docking.Top;
+        }
 
 
         }
